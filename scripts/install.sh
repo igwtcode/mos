@@ -112,7 +112,13 @@ pkgs=(
   xclip
   zoxide
   ffmpegthumbnailer
+  ffmpeg
   tumbler
+  vlc-plugins-all
+  xdg-user-dirs
+  xdg-utils
+  plocate
+  accountsservice
 
   # Bluetooth
   blueman
@@ -132,7 +138,7 @@ pkgs=(
   dnsutils
   inetutils
   ipset
-  iptables-nft
+  iptables
   wireguard-tools
   wpa_supplicant
   freerdp
