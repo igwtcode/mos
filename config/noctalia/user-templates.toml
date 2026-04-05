@@ -1,0 +1,46 @@
+[config]
+
+[templates]
+
+[templates.nvim]
+input_path = "~/.config/nvim/lua/colors-template.lua"
+output_path = "~/.config/nvim/lua/colors.lua"
+post_hook = 'pkill -SIGUSR1 nvim'
+
+[templates.ghostty]
+input_path = "~/.config/ghostty/themes/colors-template"
+output_path = "~/.config/ghostty/themes/colors"
+
+[templates.alacritty]
+input_path = "~/.config/alacritty/themes/colors-template.toml"
+output_path = "~/.config/alacritty/themes/colors.toml"
+
+[templates.kitty]
+input_path = "~/.config/kitty/themes/colors-template.conf"
+output_path = "~/.config/kitty/themes/colors.conf"
+
+[templates.gitconfig]
+input_path = "~/.config/gitconfig/gitconfig-template"
+output_path = "~/.gitconfig"
+
+[templates.lazygit]
+input_path = "~/.config/lazygit/config-template.yml"
+output_path = "~/.config/lazygit/config.yml"
+
+[templates.lazydocker]
+input_path = "~/.config/lazydocker/config-template.yml"
+output_path = "~/.config/lazydocker/config.yml"
+
+[templates.starship]
+input_path = "~/.config/starship/config-template.toml"
+output_path = "~/.config/starship/config.toml"
+
+[templates.tmux]
+input_path = "~/.config/tmux/colors-template.conf"
+output_path = "~/.config/tmux/colors.conf"
+post_hook = 'tmux source-file ~/.config/tmux/tmux.conf'
+
+[templates.bat]
+input_path = "~/.config/bat/themes/colors-template.tmTheme"
+output_path = "~/.config/bat/themes/colors.tmTheme"
+post_hook = 'bat cache --build &>/dev/null'

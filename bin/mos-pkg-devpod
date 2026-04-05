@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+dir=$(mktemp -d)
+trap 'rm -rf "$dir"' EXIT
+
+(
+  cd "$dir" || exit 1
+  curl -sSL https://github.com/loft-sh/devpod/releases/latest/download/devpod-linux-amd64 \
+    -o devpod && sudo install -c -m 0755 devpod /usr/local/bin
+)

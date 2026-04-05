@@ -1,0 +1,50 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$directory\
+$git_branch\
+$git_status\
+$cmd_duration\
+$character"""
+
+add_newline = false
+
+palette = "colors"
+
+[directory]
+format = "[$path ](fg:primary)"
+truncate_to_repo = true
+truncation_length = 3
+
+[git_branch]
+format = '[$branch ](fg:accent)'
+
+[git_status]
+format = '[($all_status$ahead_behind )](fg:secondary)'
+
+[cmd_duration]
+min_time = 999
+format = "[$duration ](fg:muted)"
+show_milliseconds = false
+
+# [time]
+# disabled = false
+# time_format = "%R"               # Hour:Minute Format
+# style = "bg:mantle"
+# format = '[$time ](fg:overlay1)'
+
+[character]
+success_symbol = '[\$](fg:accent)'
+error_symbol = '[\$](bold @{error})'
+vimcmd_symbol = "[N](bold fg:primary)"
+vimcmd_replace_one_symbol = "[R](bold fg:primary)"
+vimcmd_replace_symbol = "[R](bold fg:primary)"
+vimcmd_visual_symbol = "[V](bold fg:subtle)"
+
+[palettes.colors]
+primary = '{{colors.primary.default.hex}}'
+accent = '{{colors.tertiary.default.hex}}'
+secondary = '{{colors.secondary.default.hex}}'
+muted = '{{colors.outline.default.hex}}'
+subtle = '{{colors.on_surface_variant.default.hex}}'
+dim = '{{colors.surface_dim.default.hex}}'

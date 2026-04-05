@@ -1,0 +1,42 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
+git:
+  log:
+    showWholeGraph: true
+    showGraph: when-maximised
+  branchLogCmd: git log --graph --color=always --abbrev-commit --decorate --date=local --pretty=medium {{branchName}} --
+  allBranchesLogCmds:
+    - git log --graph --color=always --abbrev-commit --decorate --date=local --pretty=medium --
+  pagers:
+    - colorArg: always
+      pager: delta --features catppuccin-mocha --paging=never --tabs=2
+gui:
+  useHunkModeInStagingView: false
+  timeFormat: 01/02 15:04:05
+  shortTimeFormat: "Today 15:04:05"
+  nerdFontsVersion: "3"
+  showRandomTip: false
+  showDivergenceFromBaseBranch: arrowAndNumber
+  showFileIcons: false
+  sidePanelWidth: 0.16
+  authorColors:
+    "*": "{{colors.primary.default.hex}}"
+  theme:
+    activeBorderColor:
+      - "{{colors.tertiary.default.hex}}"
+      - bold
+    inactiveBorderColor:
+      - "{{colors.on_surface_variant.default.hex}}"
+    optionsTextColor:
+      - "{{colors.secondary.default.hex}}"
+    selectedLineBgColor:
+      - "{{colors.surface_container.default.hex}}"
+    cherryPickedCommitBgColor:
+      - "{{colors.surface_container_high.default.hex}}"
+    cherryPickedCommitFgColor:
+      - "{{colors.primary.default.hex}}"
+    unstagedChangesColor:
+      - "{{colors.error.default.hex}}"
+    defaultFgColor:
+      - "{{colors.on_surface.default.hex}}"
+    searchingActiveBorderColor:
+      - "{{colors.tertiary.default.hex}}"

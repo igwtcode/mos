@@ -1,0 +1,72 @@
+# vim: ft=gitconfig
+
+[init]
+  defaultBranch = main
+
+[user]
+  name = "ghost"
+  email = "(none)"
+
+[core]
+  editor = nvim
+  pager = delta
+  whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+  autocrlf = input
+  ; pager = less -F -X
+
+[color]
+  ui = auto
+
+[pull]
+  rebase = true
+
+[merge]
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default
+
+[credential "https://github.com"]
+  helper =
+  helper = !gh auth git-credential
+
+[credential "https://gist.github.com"]
+  helper =
+  helper = !gh auth git-credential
+
+[delta]
+  features = colors
+  navigate = true
+  side-by-side = true
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta "colors"]
+	blame-palette = "{{colors.background.default.hex}} {{colors.surface_dim.default.hex}} {{colors.surface_container_lowest.default.hex}} {{colors.surface_container.default.hex}} {{colors.surface_container_high.default.hex}}"
+	commit-decoration-style = "box ul"
+	dark = true
+	file-decoration-style = "{{colors.on_surface.default.hex}}"
+	file-style = "{{colors.on_surface.default.hex}}"
+	hunk-header-decoration-style = "box ul"
+	hunk-header-file-style = "bold"
+	hunk-header-line-number-style = "bold {{colors.on_surface_variant.default.hex}}"
+	hunk-header-style = "file line-number syntax"
+	line-numbers = true
+	line-numbers-left-style = "{{colors.outline.default.hex}}"
+	line-numbers-minus-style = "bold {{colors.error.default.hex}}"
+	line-numbers-plus-style = "bold {{colors.primary.default.hex}}"
+	line-numbers-right-style = "{{colors.outline.default.hex}}"
+	line-numbers-zero-style = "{{colors.outline.default.hex}}"
+	minus-emph-style = "bold syntax {{colors.error_container.default.hex}}"
+	minus-style = "syntax {{colors.surface_container.default.hex}}"
+	plus-emph-style = "bold syntax {{colors.primary_container.default.hex}}"
+	plus-style = "syntax {{colors.surface_container.default.hex}}"
+	map-styles = \
+		bold purple => syntax "{{colors.tertiary_container.default.hex}}", \
+		bold blue => syntax "{{colors.secondary_container.default.hex}}", \
+		bold cyan => syntax "{{colors.secondary_container.default.hex}}", \
+		bold yellow => syntax "{{colors.tertiary_container.default.hex}}"
+	# Should match the name of the bat theme
+	syntax-theme = "colors"
+

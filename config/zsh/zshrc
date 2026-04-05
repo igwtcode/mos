@@ -1,0 +1,143 @@
+#!/usr/bin/env zsh
+
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt prompt_subst
+setopt AUTO_CD
+
+# auto completion and suggestions
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=*' 'r:|=* m:{a-z\-}={A-Z\_}'
+zstyle ':completion:*' list-dirs-first true
+
+autoload -U +X bashcompinit && bashcompinit
+autoload -Uz compinit
+compinit -u
+
+export HISTORY_TIME_FORMAT="%Y-%m-%d %T "
+export HISTFILE=$HOME/.zsh_history
+export HISTSIZE=9999
+export SAVEHIST=9999
+export EDITOR=nvim
+export VISUAL=nvim
+export TASK_EXE='go-task'
+export CODEBOX_DIR=~/codebox
+export LG_CONFIG_FILE=~/.config/lazygit/config.yml
+export STARSHIP_CONFIG=~/.config/starship/config.toml
+export TF_PLUGIN_CACHE_DIR="$HOME/.cache/terraform-plugins"
+export SAM_CLI_TELEMETRY=0
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin:$GOPATH/bin/bin:$HOME/.bun/bin:$HOME/.local/bin
+export LIBVIRT_DEFAULT_URI="qemu:///system"
+export FZF_DEFAULT_OPTS=" \
+--preview-window='border-rounded' --prompt='> ' \
+--marker='>' --pointer='◆' --separator='O' --scrollbar='│' --highlight-line \
+--layout=reverse"
+
+alias ....='cd ../../..'
+alias ...='cd ../..'
+alias ..='cd ..'
+alias b=bat
+alias bg=' bg'
+alias c=clear
+alias clear=' clear'
+alias exit=' exit'
+alias fg=' fg'
+alias grep='grep --color=auto'
+alias hist='history -E'
+alias k=kubectl
+alias lazydocker=' CONFIG_DIR=~/.config/lazydocker lazydocker'
+alias lazygit=' lazygit'
+alias lg=lazygit
+alias ll=' eza -l --group-directories-first --git --git-repos --icons --ignore-glob ".DS_Store"'
+alias lla='ll -A'
+alias ls='ls --color=auto'
+alias lt=' eza -l --group-directories-first --ignore-glob ".git|.DS_Store" -aTL'
+alias lzd=lazydocker
+alias pwd=' pwd'
+alias sel-awsprofile="grep -E '^\[.+\]$' ~/.aws/credentials | sed -E 's/^\[(.+)\]$/\1/' | sort -u | fzf"
+alias tf=terraform
+alias v=' nvim'
+alias randraw="openssl rand -hex 32 | tr -d '\n' | wl-copy"
+alias randbase64="openssl rand 60 | base64 -w 0 | tr -d '\n' | wl-copy"
+alias cp-awsprofile=" sel-awsprofile | tr -d '\n' | wl-copy"
+alias ch="cliphist list | fzf --no-sort -d $'\t' --with-nth 2 | cliphist decode | wl-copy"
+alias k='kubectl'
+alias task='go-task'
+alias gpl=' git pull --all --prune'
+
+ytv() { yt-dlp --cookies-from-browser firefox --no-playlist --progress -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]" --merge-output-format mp4 -o "$HOME/Downloads/%(title)s.%(ext)s" "$1"; }
+yta() { yt-dlp --cookies-from-browser firefox --no-playlist --progress -x --audio-format mp3 --audio-quality 0 -o "$HOME/Downloads/%(title)s.%(ext)s" "$1"; }
+
+gg() {
+  fd -t d -d 2 -H -E node_modules -E '.git' -E '.terraform' -E '.vscode' --base-directory $CODEBOX_DIR --min-depth 2 |
+    fzf --height=36% --prompt="Git Repo: " | 
+    xargs -r -I {} cd $CODEBOX_DIR/{} 
+}
+
+pinstall() {
+  paru -Slq | fzf \
+    --preview "paru -Si {}" \
+    --preview-window=right:67%:wrap \
+    --height=36% \
+    --prompt="Install: " |
+    xargs -r paru -S --needed --noconfirm
+}
+
+premove() {
+  paru -Qq | fzf \
+    --preview "paru -Qi {}" \
+    --preview-window=right:78%:wrap \
+    --height=33% \
+    --prompt="Remove: " |
+    xargs -r paru -Rns
+}
+
+pinfo() {
+  paru -Qq | fzf \
+    --preview "paru -Qi {}" \
+    --preview-window=right:78%:wrap \
+    --height=33% \
+    --prompt="Info: " | xargs -r wl-copy
+}
+
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+eval "$(task --completion zsh)"
+source <(fzf --zsh)
+source <(gh completion -s zsh)
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/nvm/init-nvm.sh
+
+complete -C "$(which aws_completer)" aws
+# complete -o nospace -C "$(which terraform)" terraform
+
+if command -v tbx-v1 &>/dev/null; then
+  source <(tbx-v1 completion zsh)
+fi
+
+# if command -v op &>/dev/null; then
+#   eval "$(op completion zsh)"
+#   compdef _op op
+# fi
+
+# if command -v mise &>/dev/null; then
+#   source <(mise completion zsh)
+# fi
+
+# if command -v kubectl &>/dev/null; then
+#   source <(kubectl completion zsh)
+# fi
+
+# source <(gum completion zsh)
+
+[[ -f ~/.customrc.sh ]] && source ~/.customrc.sh

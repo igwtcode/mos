@@ -1,0 +1,13 @@
+/-output "eDP-1" {
+mode "2048x1280@120.001"
+scale 1.0
+position x=0 y=427
+}
+/-output "DP-1" {
+mode "3840x2560@59.984"
+scale 1.25
+position x=2048 y=0
+focus-at-startup
+}
+
+

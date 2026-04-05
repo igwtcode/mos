@@ -1,0 +1,45 @@
+binds {
+    Mod+Space {
+        spawn-sh "qs -c noctalia-shell ipc call launcher toggle"
+    }
+    Mod+S {
+        spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"
+    }
+    Mod+Comma {
+        spawn-sh "qs -c noctalia-shell ipc call settings toggle"
+    }
+    // Audio & Brightness
+    XF86AudioRaiseVolume {
+        spawn qs -c noctalia-shell ipc call volume increase
+    }
+    XF86AudioLowerVolume {
+        spawn qs -c noctalia-shell ipc call volume decrease
+    }
+    XF86AudioMute {
+        spawn qs -c noctalia-shell ipc call volume muteOutput
+    }
+    XF86MonBrightnessUp {
+        spawn qs -c noctalia-shell ipc call brightness increase
+    }
+    XF86MonBrightnessDown {
+        spawn qs -c noctalia-shell ipc call brightness decrease
+    }
+}
+// Override to disable super+tab
+recent-windows {
+    binds {
+        Alt+Tab {
+            next-window scope=output
+        }
+        Alt+Shift+Tab {
+            previous-window scope=output
+        }
+        Alt+grave {
+            next-window filter=app-id
+        }
+        Alt+Shift+grave {
+            previous-window filter=app-id
+        }
+    }
+}
+

@@ -1,0 +1,19 @@
+[general]
+import = ["~/.config/alacritty/themes/colors.toml"]
+
+[window]
+padding = { x = 12, y = 7 }
+opacity = 0.87
+option_as_alt = "Both"
+
+[font]
+normal = { family = "GeistMono Nerd Font", style = "Medium" }
+bold = { family = "GeistMono Nerd Font", style = "Medium" }
+size = 12
+
+[cursor]
+style = { shape = "Block", blinking = "Off" }
+
+[env]
+TERM = "xterm-256color"
+COLORTERM = "truecolor"

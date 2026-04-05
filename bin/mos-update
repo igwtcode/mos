@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+sudo rm -rf /var/cache/pacman/pkg/download-*
+paru -Syyu --noconfirm
+paru -Sc --noconfirm
+
+rustup update
+
+command -v tldr &>/dev/null && tldr --update
+
+~/.local/bin/mos-pkg-aws-cli
+~/.local/bin/mos-pkg-aws-sam-cli
+~/.local/bin/mos-pkg-devpod
