@@ -244,6 +244,7 @@ pkgs=(
   xwayland-satellite
   xdg-desktop-portal
   xdg-desktop-portal-gtk
+  xdg-desktop-portal-gnome
   xdg-user-dirs
   xdg-utils
   qt5-wayland
