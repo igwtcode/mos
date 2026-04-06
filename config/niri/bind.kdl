@@ -3,9 +3,6 @@ binds {
     Mod+Return {
         spawn "ghostty"
     }
-    Mod+Ctrl+Return {
-        spawn-sh "qs -c noctalia-shell ipc call launcher toggle"
-    }
     Mod+Space {
         spawn-sh "qs -c noctalia-shell ipc call launcher toggle"
     }
@@ -32,7 +29,7 @@ binds {
 
     // Lock screen
     Mod+Alt+L {
-        spawn-sh "qs -c noctalia-shell ipc call session lock"
+        spawn-sh "qs -c noctalia-shell ipc call sessionMenu lock"
     }
 
     // Media keys

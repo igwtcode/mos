@@ -9,10 +9,13 @@ layout {
     default-column-width {
         proportion 0.5
     }
+   focus-ring {
+        on
+        width 3
+    }
     border {
         off
-        width 4
-        active-color "#707070"
+        width 2
     }
     shadow {
         softness 30
