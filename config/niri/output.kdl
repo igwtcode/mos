@@ -6,7 +6,7 @@ output "eDP-1" {
 
 output "DP-1" {
   mode "3840x2560@59.984"
-  scale 1.0
+  scale 1.25
   position x=2048 y=0
   focus-at-startup
 }
