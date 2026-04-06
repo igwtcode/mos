@@ -4,13 +4,14 @@ rustup default stable
 
 sudo chsh -s "$(command -v zsh)" "$USER"
 sudo usermod -aG docker "$USER"
+sudo systemctl enable docker
 
 gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3'
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 ## greetd display manager
 sudo mkdir -p /etc/greetd
-sudo tee /etc/greetd/config.toml > /dev/null <<'GREETD'
+sudo tee /etc/greetd/config.toml >/dev/null <<'GREETD'
 [terminal]
 vt = 1
 
