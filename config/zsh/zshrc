@@ -72,17 +72,45 @@ alias cp-awsprofile=" sel-awsprofile | tr -d '\n' | wl-copy"
 alias ch="cliphist list | fzf --no-sort -d $'\t' --with-nth 2 | cliphist decode | wl-copy"
 alias k='kubectl'
 alias task='go-task'
-alias gpl=' git pull --all --prune'
 
 ytv() { yt-dlp --cookies-from-browser firefox --no-playlist --progress -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]" --merge-output-format mp4 -o "$HOME/Downloads/%(title)s.%(ext)s" "$1"; }
 yta() { yt-dlp --cookies-from-browser firefox --no-playlist --progress -x --audio-format mp3 --audio-quality 0 -o "$HOME/Downloads/%(title)s.%(ext)s" "$1"; }
 
+alias gp=' git pull --all --prune'
+alias gd=' git diff'
+alias gl=" git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) %C(dim white)%<(16)%an%C(reset) %C(bold green)%<(14)%ar%C(reset) %C(white)%s%C(reset)%C(auto)%d%C(reset)' --all"
+
+gb() {
+  branch=$(git branch -a | grep -v 'HEAD ->' | sed 's/^[* ]*//' | sed 's|remotes/||' | sort -u | \
+    fzf --preview "git log --oneline --color=always {}" --prompt "Git branch: ")
+  [[ -n "$branch" ]] && { git switch "${branch#*/}"; gp || true; }
+}
+
+gc() {
+  files=$(git -c color.status=always status --short | \
+    fzf --multi --ansi --bind 'ctrl-a:select-all' \
+        --preview 'git diff -- {2} | delta --width=$FZF_PREVIEW_COLUMNS' \
+        --preview-window=right:81% | awk '{print $2}')
+  [[ -z "$files" ]] && return
+  msg=$(gum input --placeholder "Commit message...")
+  [[ -z "$msg" ]] && return
+  echo "$files" | xargs git add && git commit -m "$msg"
+}
+
 gg() {
   dir=$(fd -t d -d 2 -H -E node_modules -E '.git' -E '.terraform' -E '.vscode' \
       --base-directory $CODEBOX_DIR --min-depth 2 |
-      fzf --height=36% --prompt="Git Repo: ")
+      fzf --height=36% --query "$1" --prompt="Git Repo: ")
   [[ -n "$dir" ]] && cd "$CODEBOX_DIR/$dir"
 }
+
+ghs() {
+  gh auth status --json 'hosts' --jq '.hosts."github.com".[].login' |
+    fzf --height=4 --query "$1" --prompt "Github user: " |
+    xargs -r -I {} gh auth switch -u {}
+}
+
+zshaddhistory() { [[ $1 != (gb |gc |gg )* ]] }
 
 pinstall() {
   paru -Slq | fzf \
