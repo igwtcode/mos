@@ -15,14 +15,14 @@ function M.setup()
     base06 = "{{colors.on_surface.default.hex}}", -- Light Foreground
     base07 = "{{colors.on_background.default.hex}}", -- Lightest Foreground
     -- Accent colors
-    base08 = "{{colors.error.default.hex}}", -- Variables, XML Tags, Errors
+    base08 = "{{colors.error.default.hex | set_lightness: 72}}", -- Variables, XML Tags, Errors
     base09 = "{{colors.tertiary.default.hex}}", -- Integers, Constants
     base0A = "{{colors.secondary.default.hex}}", -- Classes, Search Background
     base0B = "{{colors.primary.default.hex}}", -- Strings, Diff Inserted
     base0C = "{{colors.tertiary_fixed_dim.default.hex}}", -- Regex, Escape Chars
     base0D = "{{colors.primary_fixed_dim.default.hex}}", -- Functions, Methods
     base0E = "{{colors.secondary_fixed_dim.default.hex}}", -- Keywords, Storage
-    base0F = "{{colors.error_container.default.hex}}", -- Deprecated, Embedded Tags
+    base0F = "{{colors.on_surface_variant.default.hex | set_lightness: 67}}", -- Deprecated, Embedded Tags
   })
 
   local hl = vim.api.nvim_set_hl
