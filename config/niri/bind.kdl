@@ -62,13 +62,13 @@ binds {
     }
 
     // Screenshots
-    Ctrl+Shift+1 {
+    Mod+Shift+1 {
         screenshot
     }
-    Ctrl+Shift+2 {
+    Mod+Shift+2 {
         screenshot-screen
     }
-    Ctrl+Shift+3 {
+    Mod+Shift+3 {
         screenshot-window
     }
 
