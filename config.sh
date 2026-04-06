@@ -26,10 +26,12 @@ cp -rf ./config/gitconfig/* ~/.config/gitconfig/
 cp -rf ./config/kitty/* ~/.config/kitty/
 cp -rf ./config/lazydocker/* ~/.config/lazydocker/
 cp -rf ./config/lazygit/* ~/.config/lazygit/
-cp -rf ./config/niri/* ~/.config/niri/
 cp -rf ./config/nvim/{*,.*} ~/.config/nvim/
 cp -rf ./config/starship/* ~/.config/starship/
 cp -rf ./config/tmux/* ~/.config/tmux/
+
+cp -rf ./config/niri/* ~/.config/niri/
+[[ -f ~/.config/niri/noctalia.kdl ]] || touch ~/.config/niri/noctalia.kdl
 
 [[ -d ~/.config/tmux/plugins/tpm ]] || {
   git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm &&
