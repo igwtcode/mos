@@ -43,3 +43,26 @@ layer-rule {
     place-within-backdrop true
 }
 
+layer-rule {
+    match namespace="^noctalia-notifications"
+    block-out-from "screencast"
+}
+layer-rule {
+    match namespace="^noctalia-notifications"
+    block-out-from "screen-capture"
+}
+
+window-rule {
+    match app-id=r#"^org\.telegram\.desktop$"#
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+    match app-id=r#"^1password$"#
+    block-out-from "screencast"
+}
+window-rule {
+    match app-id=r#"^org\.telegram\.desktop$"#
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+    match app-id=r#"^1password$"#
+    block-out-from "screen-capture"
+}
