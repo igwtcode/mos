@@ -39,7 +39,7 @@ export PATH=$PATH:$GOPATH/bin:$GOPATH/bin/bin:$HOME/.bun/bin:$HOME/.local/bin
 export LIBVIRT_DEFAULT_URI="qemu:///system"
 export FZF_DEFAULT_OPTS=" \
 --preview-window='border-rounded' --prompt='❯ ' \
---marker='●' --pointer='▶' --separator='─' --scrollbar='▌' --highlight-line \
+--marker='● ' --pointer='▶ ' --separator='─' --scrollbar='▌' --highlight-line \
 --layout=reverse"
 
 alias ....='cd ../../..'
@@ -110,6 +110,10 @@ ghs() {
     fzf --height=4 --query "$1" --prompt "Github user: " |
     xargs -r -I {} gh auth switch -u {}
 }
+
+alias mos-gh-clone=' ghs i; mos-gh-clone'
+alias ghclone=' ghs eu; tbx-v1 github clone --input-file ~/.config/tbx/gh-clone.yml -o ~/.config/tbx/.out/gh-clone.yml'
+alias ccclone=' tbx-v1 codecommit clone --input-file ~/.config/tbx/cc-clone.yml -o ~/.config/tbx/.out/cc-clone.yml'
 
 zshaddhistory() { [[ $1 != (gb |gc |gg )* ]] }
 
