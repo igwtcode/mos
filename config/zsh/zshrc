@@ -38,8 +38,8 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin:$GOPATH/bin/bin:$HOME/.bun/bin:$HOME/.local/bin
 export LIBVIRT_DEFAULT_URI="qemu:///system"
 export FZF_DEFAULT_OPTS=" \
---preview-window='border-rounded' --prompt='> ' \
---marker='>' --pointer='◆' --separator='O' --scrollbar='│' --highlight-line \
+--preview-window='border-rounded' --prompt='❯ ' \
+--marker='●' --pointer='▶' --separator='─' --scrollbar='▌' --highlight-line \
 --layout=reverse"
 
 alias ....='cd ../../..'
@@ -78,9 +78,10 @@ ytv() { yt-dlp --cookies-from-browser firefox --no-playlist --progress -f "bestv
 yta() { yt-dlp --cookies-from-browser firefox --no-playlist --progress -x --audio-format mp3 --audio-quality 0 -o "$HOME/Downloads/%(title)s.%(ext)s" "$1"; }
 
 gg() {
-  fd -t d -d 2 -H -E node_modules -E '.git' -E '.terraform' -E '.vscode' --base-directory $CODEBOX_DIR --min-depth 2 |
-    fzf --height=36% --prompt="Git Repo: " | 
-    xargs -r -I {} cd $CODEBOX_DIR/{} 
+  dir=$(fd -t d -d 2 -H -E node_modules -E '.git' -E '.terraform' -E '.vscode' \
+      --base-directory $CODEBOX_DIR --min-depth 2 |
+      fzf --height=36% --prompt="Git Repo: ")
+  [[ -n "$dir" ]] && cd "$CODEBOX_DIR/$dir"
 }
 
 pinstall() {
