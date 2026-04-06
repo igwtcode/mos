@@ -12,6 +12,8 @@ cp -rf ./bin/mos-* ~/.local/bin/
 chmod +x ~/.local/bin/mos-*
 
 cp -f ./config/noctalia/user-templates.toml ~/.config/noctalia/user-templates.toml
+[[ -f ~/.config/noctalia/settings.json ]] || cp -f ./config/noctalia/settings.json ~/.config/noctalia/settings.json
+
 cp -f ./config/terraform/terraformrc ~/.terraformrc
 cp -f ./config/vim/vimrc ~/.vimrc
 cp -f ./config/zsh/zshrc ~/.zshrc

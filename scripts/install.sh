@@ -119,6 +119,9 @@ pkgs=(
   xdg-utils
   plocate
   accountsservice
+  matugen
+  cava
+  qt6-multimedia-ffmpeg
 
   # Bluetooth
   blueman
@@ -226,6 +229,10 @@ pkgs=(
 
   # Flatpak
   flatpak
+
+  # Display manager
+  greetd
+  greetd-tuigreet
 
   # Wayland desktop & compositors
   niri
