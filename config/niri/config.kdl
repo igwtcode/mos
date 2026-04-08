@@ -2,15 +2,12 @@ spawn-at-startup "qs" "-c" "noctalia-shell"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "/usr/lib/xdg-desktop-portal-gnome"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-
 spawn-at-startup "ghostty"
-include "./animation.kdl"
+
 include "./bind.kdl"
-// include "./blur.kdl"
 include "./input.kdl"
 include "./layout.kdl"
 include "./misc.kdl"
 include "./noctalia.kdl"
 include "./output.kdl"
 include "./rule.kdl"
-
