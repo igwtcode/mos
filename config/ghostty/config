@@ -9,17 +9,17 @@ font-feature = -calt
 font-feature = -liga
 font-feature = -dlig
 font-synthetic-style = true
-adjust-cell-height = 9%
+adjust-cell-height = 7%
 
 # Window Configuration
 window-save-state= always
 window-decoration = false
-window-padding-x = 9
-window-padding-y = 7
+window-padding-x = 6
+window-padding-y = 6
 window-padding-balance = true
 window-padding-color = background
-background-opacity = 0.87
-background-blur-radius = 30
+background-opacity = 1
+# background-blur-radius = 30
 
 # Cursor Configuration
 cursor-style = block
