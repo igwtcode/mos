@@ -84,7 +84,7 @@ alias gl=" git log --graph --abbrev-commit --decorate --format=format:'%C(bold b
 gb() {
   branch=$(git branch -a | grep -v 'HEAD ->' | sed 's/^[* ]*//' | sed 's|remotes/||' | sort -u | \
     fzf --preview "git log --oneline --color=always {}" --prompt "Git branch: ")
-  [[ -n "$branch" ]] && { git switch "${branch#*/}"; gp || true; }
+  [[ -n "$branch" ]] && { git switch "${branch#origin/}"; gp || true; }
 }
 
 gc() {
