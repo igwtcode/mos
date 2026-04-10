@@ -74,6 +74,8 @@ alias ch="cliphist list | fzf --no-sort -d $'\t' --with-nth 2 | cliphist decode 
 alias task='go-task'
 alias t=' tmux a || tmux'
 alias histcopy=' fc -ln 1 |fzf --tac --scheme=history |xargs -r -I {} wl-copy "{}"'
+alias cr='cargo run -- '
+alias crq='cargo run -q -- '
 
 ytv() { yt-dlp --cookies-from-browser firefox --no-playlist --progress -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]" --merge-output-format mp4 -o "$HOME/Downloads/%(title)s.%(ext)s" "$1"; }
 yta() { yt-dlp --cookies-from-browser firefox --no-playlist --progress -x --audio-format mp3 --audio-quality 0 -o "$HOME/Downloads/%(title)s.%(ext)s" "$1"; }
