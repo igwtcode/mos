@@ -177,4 +177,8 @@ fi
 
 # source <(gum completion zsh)
 
+if command -v duk &>/dev/null; then
+  source <(duk completions zsh)
+fi
+
 [[ -f ~/.customrc.sh ]] && source ~/.customrc.sh
