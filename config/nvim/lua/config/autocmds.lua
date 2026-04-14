@@ -185,7 +185,7 @@ end, {})
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
   group = vim.api.nvim_create_augroup("edit_raw_text", { clear = true }),
-  pattern = { "gitcommit", "markdown", "txt" },
+  pattern = { "gitcommit", "markdown", "text" },
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = false
