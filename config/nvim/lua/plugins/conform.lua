@@ -26,13 +26,21 @@ return {
         ["typescriptreact"] = { "biome", "prettier", stop_after_first = true },
         yaml = { "biome", "prettier" },
         yml = { "biome", "prettier" },
-        go = { "goimports", "gofumpt", "gofmt" },
+        --go = { "goimports", "gofumpt", "gofmt" },
+        go = { "goformat" },
         --kdl = { "kdlfmt" },
       },
       -- The options you set here will be merged with the builtin formatters.
       -- You can also define any custom formatters here.
       ---@type table<string, conform.FormatterConfigOverride|fun(bufnr: integer): nil|conform.FormatterConfigOverride>
       formatters = {
+        goformat = {
+          command = "golangci-lint",
+          args = {
+            "fmt",
+            "--stdin",
+          },
+        },
         biome = {
           command = "biome",
           args = {
