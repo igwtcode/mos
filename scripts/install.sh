@@ -177,6 +177,7 @@ pkgs=(
 
   # AI tools
   claude-code
+  opencode
 
   # Virtualisation
   qemu-full
