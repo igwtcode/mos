@@ -53,6 +53,14 @@ blur {
     saturation 1.5
 }
 
+cursor {
+  xcursor-theme "capitaine-cursors"
+  xcursor-size 36
+
+  hide-when-typing
+  hide-after-inactive-ms 3000
+}
+
 layout {
   gaps 0
   background-color "transparent"
