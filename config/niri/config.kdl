@@ -46,7 +46,6 @@ gestures {
 }
 
 blur {
-    // off
     passes 3
     offset 4.2
     noise 0.02

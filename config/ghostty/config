@@ -18,7 +18,7 @@ window-decoration = false
 # window-padding-y = 6
 # window-padding-balance = true
 window-padding-color = background
-background-opacity = 0.72
+# background-opacity = 0.78
 # background-blur-radius = 30
 
 # Cursor Configuration
