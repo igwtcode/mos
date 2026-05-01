@@ -55,6 +55,12 @@ alias fg=' fg'
 alias grep='grep --color=auto'
 alias hist='history -E'
 alias k=kubectl
+alias kgp='kubectl get pods'
+alias kdp='kubectl describe pod'
+alias kgd='kubectl get deploy'
+alias kdd='kubectl describe deploy'
+alias kgs='kubectl get service'
+alias kds='kubectl describe service'
 alias lazydocker=' CONFIG_DIR=~/.config/lazydocker lazydocker'
 alias lazygit=' lazygit'
 alias lg=lazygit
