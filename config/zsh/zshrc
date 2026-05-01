@@ -148,6 +148,16 @@ pinfo() {
     --prompt="Info: " | xargs -r wl-copy
 }
 
+kns() {
+  local ns
+  ns=$(kubectl get ns -o jsonpath='{.items[*].metadata.name}' |tr ' ' '\n' |fzf \
+      --preview "kubectl describe ns {}" \
+      --preview-window=right:78%:wrap \
+      --height=18 \
+      --prompt="Switch Namespace: ")
+  [[ -n "$ns" ]] && kubectl config set-context --current --namespace $ns
+}
+
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(task --completion zsh)"
@@ -173,14 +183,6 @@ fi
 #   source <(mise completion zsh)
 # fi
 
-# if command -v kubectl &>/dev/null; then
-#   source <(kubectl completion zsh)
-# fi
-
 # source <(gum completion zsh)
-
-if command -v duk &>/dev/null; then
-  source <(duk completions zsh)
-fi
 
 [[ -f ~/.customrc.sh ]] && source ~/.customrc.sh
