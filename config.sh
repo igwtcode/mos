@@ -29,6 +29,7 @@ cp -rf ./config/lazygit/* ~/.config/lazygit/
 cp -rf ./config/nvim/{*,.*} ~/.config/nvim/
 cp -rf ./config/starship/* ~/.config/starship/
 cp -rf ./config/tmux/* ~/.config/tmux/
+cp -rf ./config/k9s/* ~/.config/k9s/
 
 cp -rf ./config/niri/* ~/.config/niri/
 [[ -f ~/.config/niri/noctalia.kdl ]] || touch ~/.config/niri/noctalia.kdl

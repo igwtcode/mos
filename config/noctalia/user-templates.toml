@@ -44,3 +44,7 @@ post_hook = 'tmux source-file ~/.config/tmux/tmux.conf'
 input_path = "~/.config/bat/themes/colors-template.tmTheme"
 output_path = "~/.config/bat/themes/colors.tmTheme"
 post_hook = 'bat cache --build &>/dev/null'
+
+[templates.k9s]
+input_path = "~/.config/k9s/skins/colors-template.yaml"
+output_path = "~/.config/k9s/skins/colors.yaml"
