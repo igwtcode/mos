@@ -54,13 +54,6 @@ alias exit=' exit'
 alias fg=' fg'
 alias grep='grep --color=auto'
 alias hist='history -E'
-alias k=kubectl
-alias kgp='kubectl get pods'
-alias kdp='kubectl describe pod'
-alias kgd='kubectl get deploy'
-alias kdd='kubectl describe deploy'
-alias kgs='kubectl get service'
-alias kds='kubectl describe service'
 alias lazydocker=' CONFIG_DIR=~/.config/lazydocker lazydocker'
 alias lazygit=' lazygit'
 alias lg=lazygit
@@ -154,7 +147,19 @@ pinfo() {
     --prompt="Info: " | xargs -r wl-copy
 }
 
-kns() {
+alias k=kubectl
+alias kl='kubectl logs'
+alias ke='kubectl exec'
+alias kg='kubectl get'
+alias kgp='kubectl get pods'
+alias kgd='kubectl get deploy'
+alias kgs='kubectl get service'
+alias kd='kubectl describe'
+alias kdp='kubectl describe pod'
+alias kdd='kubectl describe deploy'
+alias kds='kubectl describe service'
+
+kn() {
   local ns
   ns=$(kubectl get ns -o jsonpath='{.items[*].metadata.name}' |tr ' ' '\n' |fzf \
       --preview "kubectl describe ns {}" \
@@ -162,6 +167,14 @@ kns() {
       --height=18 \
       --prompt="Switch Namespace: ")
   [[ -n "$ns" ]] && kubectl config set-context --current --namespace $ns
+}
+
+kc() {
+  local ctx
+  ctx=$(kubectl config get-contexts -o name |fzf \
+      --height=9 \
+      --prompt="Switch Context: ")
+  [[ -n "$ctx" ]] && kubectl config use-context $ctx
 }
 
 eval "$(starship init zsh)"
