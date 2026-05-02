@@ -159,6 +159,12 @@ alias kdp='kubectl describe pod'
 alias kdd='kubectl describe deploy'
 alias kds='kubectl describe service'
 
+kwhere() {
+  printf 'Ctx: %s\nNS : %s\n' \
+       "$(kubectl config current-context)" \
+       "$(kubectl config view --minify -o jsonpath='{..namespace}')" | sed 's/NS : $/NS : default/'
+}
+
 kn() {
   local ns
   ns=$(kubectl get ns -o jsonpath='{.items[*].metadata.name}' |tr ' ' '\n' |fzf \
