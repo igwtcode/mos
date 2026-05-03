@@ -185,6 +185,7 @@ pkgs=(
   virt-viewer
   libvirt
   edk2-ovmf
+  cloud-image-utils
   swtpm
 
   # Editors
