@@ -176,7 +176,7 @@ pkgs=(
   python-yaml
 
   # AI tools
-  # claude-code
+  claude-code
   opencode
 
   # Virtualisation
