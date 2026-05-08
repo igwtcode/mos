@@ -183,6 +183,7 @@ kc() {
   [[ -n "$ctx" ]] && kubectl config use-context $ctx
 }
 
+eval "$(mise activate zsh)"
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(task --completion zsh)"
