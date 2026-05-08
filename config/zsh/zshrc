@@ -35,8 +35,8 @@ export LG_CONFIG_FILE=~/.config/lazygit/config.yml
 export STARSHIP_CONFIG=~/.config/starship/config.toml
 export TF_PLUGIN_CACHE_DIR="$HOME/.cache/terraform-plugins"
 export SAM_CLI_TELEMETRY=0
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin:$GOPATH/bin/bin:$HOME/.cargo/bin:$HOME/.bun/bin:$HOME/.local/bin
+# export GOPATH=$HOME/go
+# export PATH=$PATH:$GOPATH/bin:$GOPATH/bin/bin:$HOME/.cargo/bin:$HOME/.bun/bin:$HOME/.local/bin
 export LIBVIRT_DEFAULT_URI="qemu:///system"
 export FZF_DEFAULT_OPTS=" \
 --preview-window='border-rounded' --prompt='❯ ' \
@@ -191,7 +191,7 @@ source <(fzf --zsh)
 source <(gh completion -s zsh)
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/nvm/init-nvm.sh
+# source /usr/share/nvm/init-nvm.sh
 
 complete -C "$(which aws_completer)" aws
 # complete -o nospace -C "$(which terraform)" terraform
