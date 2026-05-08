@@ -105,16 +105,17 @@ gc() {
 
 goto_repodir() {
   local base_dir="$1"
-  local min_depth="$2"
-  local query="$3"
-  dir=$(fd -t d -d 2 -H -E node_modules -E '.git' -E '.terraform' -E '.vscode' \
-      --base-directory $base_dir --min-depth $min_depth |
+  local query="$2"
+  local max_depth="4"
+  dir=$(fd -t d -H --max-depth $max_depth -g '.git' \
+      --base-directory $base_dir --prune |
+      sed 's:/\.git/*$::' |
       fzf --height=36% --query "$query" --prompt="Git Repo: ")
   [[ -n "$dir" ]] && cd "$base_dir/$dir"
 }
 
-gg() { goto_repodir $CODEBOX_DIR 2 "$1" }
-lab() { goto_repodir $CODEBOX_GITLAB_DIR 1 "$1" }
+gg() { goto_repodir $CODEBOX_DIR "$1" }
+lab() { goto_repodir $CODEBOX_GITLAB_DIR "$1" }
 
 ghs() {
   gh auth status --json 'hosts' --jq '.hosts."github.com".[].login' |
