@@ -54,6 +54,7 @@ pkgs=(
   ansible
   ansible-lint
   terraform
+  opentofu
   docker
   docker-buildx
   docker-compose
