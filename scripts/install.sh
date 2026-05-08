@@ -273,6 +273,7 @@ pkgs=(
   git
   git-delta
   github-cli
+  glab
   git-remote-codecommit
   lazygit
 )
