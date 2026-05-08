@@ -31,8 +31,7 @@ export EDITOR=nvim
 export VISUAL=nvim
 export TASK_EXE='go-task'
 export CODEBOX_DIR=~/codebox
-export LAB_CODEBOX_DIR=~/lab-codebox
-export DOT_CODEBOX_DIR=~/dot-codebox
+export CODEBOX_GITLAB_DIR=~/codebox-gitlab
 export LG_CONFIG_FILE=~/.config/lazygit/config.yml
 export STARSHIP_CONFIG=~/.config/starship/config.toml
 export TF_PLUGIN_CACHE_DIR="$HOME/.cache/terraform-plugins"
@@ -115,8 +114,7 @@ goto_repodir() {
 }
 
 gg() { goto_repodir $CODEBOX_DIR 2 "$1" }
-lab() { goto_repodir $LAB_CODEBOX_DIR 1 "$1" }
-dot() { goto_repodir $DOT_CODEBOX_DIR 1 "$1" }
+lab() { goto_repodir $CODEBOX_GITLAB_DIR 1 "$1" }
 
 ghs() {
   gh auth status --json 'hosts' --jq '.hosts."github.com".[].login' |
