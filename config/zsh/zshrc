@@ -31,6 +31,8 @@ export EDITOR=nvim
 export VISUAL=nvim
 export TASK_EXE='go-task'
 export CODEBOX_DIR=~/codebox
+export LAB_CODEBOX_DIR=~/lab-codebox
+export DOT_CODEBOX_DIR=~/dot-codebox
 export LG_CONFIG_FILE=~/.config/lazygit/config.yml
 export STARSHIP_CONFIG=~/.config/starship/config.toml
 export TF_PLUGIN_CACHE_DIR="$HOME/.cache/terraform-plugins"
@@ -102,12 +104,19 @@ gc() {
   echo "$files" | xargs git add && git commit -m "$msg"
 }
 
-gg() {
+goto_repodir() {
+  local base_dir="$1"
+  local min_depth="$2"
+  local query="$3"
   dir=$(fd -t d -d 2 -H -E node_modules -E '.git' -E '.terraform' -E '.vscode' \
-      --base-directory $CODEBOX_DIR --min-depth 2 |
-      fzf --height=36% --query "$1" --prompt="Git Repo: ")
-  [[ -n "$dir" ]] && cd "$CODEBOX_DIR/$dir"
+      --base-directory $base_dir --min-depth $min_depth |
+      fzf --height=36% --query "$query" --prompt="Git Repo: ")
+  [[ -n "$dir" ]] && cd "$base_dir/$dir"
 }
+
+gg() { goto_repodir $CODEBOX_DIR 2 "$1" }
+lab() { goto_repodir $LAB_CODEBOX_DIR 1 "$1" }
+dot() { goto_repodir $DOT_CODEBOX_DIR 1 "$1" }
 
 ghs() {
   gh auth status --json 'hosts' --jq '.hosts."github.com".[].login' |
