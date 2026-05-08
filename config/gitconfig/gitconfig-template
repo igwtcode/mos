@@ -34,6 +34,10 @@
   helper =
   helper = !gh auth git-credential
 
+[credential "https://gitlab.com"]
+	helper = 
+	helper = !/usr/bin/glab auth git-credential
+
 [delta]
   features = colors
   navigate = true
