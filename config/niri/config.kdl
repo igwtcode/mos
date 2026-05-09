@@ -46,10 +46,11 @@ gestures {
 }
 
 blur {
-    passes 3
-    offset 4.2
-    noise 0.02
-    saturation 1.5
+  off
+  passes 3
+  offset 4.2
+  noise 0.02
+  saturation 1.5
 }
 
 cursor {
