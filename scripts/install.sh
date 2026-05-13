@@ -147,6 +147,7 @@ pkgs=(
   wpa_supplicant
   freerdp
   v2rayn-bin
+  tailscale
 
   # Filesystem tools
   btrfs-progs

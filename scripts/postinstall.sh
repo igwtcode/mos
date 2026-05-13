@@ -31,3 +31,6 @@ sudo virsh net-autostart default 2>/dev/null || true
 sudo virsh net-start default 2>/dev/null || true
 command -v ufw &>/dev/null && sudo ufw route allow from 192.168.122.0/24
 ## virt qemu stuff end
+
+sudo systemctl enable --now tailscaled
+sudo tailscale up
