@@ -32,5 +32,14 @@ sudo virsh net-start default 2>/dev/null || true
 command -v ufw &>/dev/null && sudo ufw route allow from 192.168.122.0/24
 ## virt qemu stuff end
 
+# https://tailscale.com/docs/reference/linux-dns
+# NetworkManager + systemd-resolved
+# If you're using both NetworkManager and systemd-resolved (as in common in many distros),
+# you'll want to make sure that /etc/resolv.conf is a symlink to /run/systemd/resolve/stub-resolv.conf.
+sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+sudo systemctl restart systemd-resolved
+sudo systemctl restart NetworkManager
+sudo systemctl restart tailscaled
+
 sudo systemctl enable --now tailscaled
 sudo tailscale up
