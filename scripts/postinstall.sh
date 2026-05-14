@@ -43,3 +43,4 @@ sudo systemctl restart tailscaled
 
 sudo systemctl enable --now tailscaled
 sudo tailscale up
+sudo tailscale set --operator="$USER"
