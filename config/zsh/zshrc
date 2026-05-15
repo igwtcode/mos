@@ -43,48 +43,55 @@ export FZF_DEFAULT_OPTS=" \
 --marker='● ' --pointer='▶ ' --separator='─' --scrollbar='▌' --highlight-line \
 --layout=reverse"
 
+alias .....='cd ../../../..'
 alias ....='cd ../../..'
 alias ...='cd ../..'
 alias ..='cd ..'
 alias b=bat
-alias bg=' bg'
+alias ccclone='tbx-v1 codecommit clone --input-file ~/.config/tbx/cc-clone.yml -o ~/.config/tbx/.out/cc-clone.yml'
 alias c=clear
-alias clear=' clear'
-alias exit=' exit'
-alias fg=' fg'
-alias grep='grep --color=auto'
+alias ch="cliphist list | fzf --no-sort -d $'\t' --with-nth 2 | cliphist decode | wl-copy"
+alias cp-awsprofile=" sel-awsprofile | tr -d '\n' | wl-copy"
+alias cr='cargo run -- '
+alias crq='cargo run -q -- '
+alias gd='git diff'
+alias ghclone='ghs eu; tbx-v1 github clone --input-file ~/.config/tbx/gh-clone.yml -o ~/.config/tbx/.out/gh-clone.yml'
+alias gl="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) %C(dim white)%<(16)%an%C(reset) %C(bold green)%<(14)%ar%C(reset) %C(white)%s%C(reset)%C(auto)%d%C(reset)' --all"
+alias gp='git pull --all --prune'
+alias histcopy=' fc -ln 1 |fzf --tac --scheme=history |xargs -r -I {} wl-copy "{}"'
 alias hist='history -E'
+alias kdd='kubectl describe deploy'
+alias kd='kubectl describe'
+alias kdp='kubectl describe pod'
+alias kds='kubectl describe service'
+alias ke='kubectl exec'
+alias kgd='kubectl get deploy'
+alias kg='kubectl get'
+alias kgp='kubectl get pods'
+alias kgs='kubectl get service'
+alias k=kubectl
+alias kl='kubectl logs'
 alias lazydocker=' CONFIG_DIR=~/.config/lazydocker lazydocker'
 alias lazygit=' lazygit'
 alias lg=lazygit
-alias ll=' eza -l --group-directories-first --git --git-repos --icons --ignore-glob ".DS_Store"'
 alias lla='ll -A'
+alias ll=' eza -l --group-directories-first --git --git-repos --icons --ignore-glob ".DS_Store"'
 alias ls='ls --color=auto'
 alias lt=' eza -l --group-directories-first --ignore-glob ".git|.DS_Store" -aTL'
 alias lzd=lazydocker
-alias pwd=' pwd'
-alias sel-awsprofile="grep -E '^\[.+\]$' ~/.aws/credentials | sed -E 's/^\[(.+)\]$/\1/' | sort -u | fzf"
-alias tf=terraform
-alias v=' nvim'
-alias randraw="openssl rand -hex 32 | tr -d '\n' | wl-copy"
-alias randbase64="openssl rand 60 | base64 -w 0 | tr -d '\n' | wl-copy"
-alias cp-awsprofile=" sel-awsprofile | tr -d '\n' | wl-copy"
-alias ch="cliphist list | fzf --no-sort -d $'\t' --with-nth 2 | cliphist decode | wl-copy"
-alias task='go-task'
-alias t=' tmux a || tmux'
-alias histcopy=' fc -ln 1 |fzf --tac --scheme=history |xargs -r -I {} wl-copy "{}"'
-alias cr='cargo run -- '
-alias crq='cargo run -q -- '
-alias j='just'
+alias mos-gh-clone='ghs i; mos-gh-clone'
 alias oc='opencode'
+alias randbase64="openssl rand 60 | base64 -w 0 | tr -d '\n' | wl-copy"
+alias randraw="openssl rand -hex 32 | tr -d '\n' | wl-copy"
+alias sel-awsprofile="grep -E '^\[.+\]$' ~/.aws/credentials | sed -E 's/^\[(.+)\]$/\1/' | sort -u | fzf"
+alias task='go-task'
+alias tf=terraform
 alias ts='tailscale'
+alias t='tmux a || tmux'
+# zshaddhistory() { [[ $1 != (gb |gc |gg )* ]] }
 
 ytv() { yt-dlp --cookies-from-browser firefox --no-playlist --progress -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]" --merge-output-format mp4 -o "$HOME/Downloads/%(title)s.%(ext)s" "$1"; }
 yta() { yt-dlp --cookies-from-browser firefox --no-playlist --progress -x --audio-format mp3 --audio-quality 0 -o "$HOME/Downloads/%(title)s.%(ext)s" "$1"; }
-
-alias gp=' git pull --all --prune'
-alias gd=' git diff'
-alias gl=" git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) %C(dim white)%<(16)%an%C(reset) %C(bold green)%<(14)%ar%C(reset) %C(white)%s%C(reset)%C(auto)%d%C(reset)' --all"
 
 gb() {
   branch=$(git branch -a | grep -v 'HEAD ->' | sed 's/^[* ]*//' | sed 's|remotes/||' | sort -u | \
@@ -122,12 +129,6 @@ ghs() {
     xargs -r -I {} gh auth switch -u {}
 }
 
-alias mos-gh-clone=' ghs i; mos-gh-clone'
-alias ghclone=' ghs eu; tbx-v1 github clone --input-file ~/.config/tbx/gh-clone.yml -o ~/.config/tbx/.out/gh-clone.yml'
-alias ccclone=' tbx-v1 codecommit clone --input-file ~/.config/tbx/cc-clone.yml -o ~/.config/tbx/.out/cc-clone.yml'
-
-zshaddhistory() { [[ $1 != (gb |gc |gg )* ]] }
-
 pinstall() {
   paru -Slq | fzf \
     --preview "paru -Si {}" \
@@ -153,18 +154,6 @@ pinfo() {
     --height=33% \
     --prompt="Info: " | xargs -r wl-copy
 }
-
-alias k=kubectl
-alias kl='kubectl logs'
-alias ke='kubectl exec'
-alias kg='kubectl get'
-alias kgp='kubectl get pods'
-alias kgd='kubectl get deploy'
-alias kgs='kubectl get service'
-alias kd='kubectl describe'
-alias kdp='kubectl describe pod'
-alias kdd='kubectl describe deploy'
-alias kds='kubectl describe service'
 
 kwhere() {
   printf 'Ctx: %s\nNS : %s\n' \
