@@ -80,6 +80,8 @@ alias ls='ls --color=auto'
 alias lt=' eza -l --group-directories-first --ignore-glob ".git|.DS_Store" -aTL'
 alias lzd=lazydocker
 alias mos-gh-clone='ghs i; mos-gh-clone'
+alias mt='mise tasks'
+alias mr='mise run'
 alias oc='opencode'
 alias randbase64="openssl rand 60 | base64 -w 0 | tr -d '\n' | wl-copy"
 alias randraw="openssl rand -hex 32 | tr -d '\n' | wl-copy"
