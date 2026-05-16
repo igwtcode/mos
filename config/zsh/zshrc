@@ -88,6 +88,7 @@ alias task='go-task'
 alias tf=terraform
 alias ts='tailscale'
 alias t='tmux a || tmux'
+alias v='nvim'
 # zshaddhistory() { [[ $1 != (gb |gc |gg )* ]] }
 
 ytv() { yt-dlp --cookies-from-browser firefox --no-playlist --progress -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]" --merge-output-format mp4 -o "$HOME/Downloads/%(title)s.%(ext)s" "$1"; }
