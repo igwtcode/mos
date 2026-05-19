@@ -48,3 +48,7 @@ post_hook = 'bat cache --build &>/dev/null'
 [templates.k9s]
 input_path = "~/.config/k9s/skins/colors-template.yaml"
 output_path = "~/.config/k9s/skins/colors.yaml"
+
+[templates.superfile]
+input_path = "~/.config/superfile/theme/colors-template.toml"
+output_path = "~/.config/superfile/theme/colors.toml"

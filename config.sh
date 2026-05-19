@@ -3,7 +3,7 @@
 #rm -rf ~/.config/{alacritty,bat,ghostty,gitconfig,kitty,lazydocker,lazygit,niri,nvim,starship,tmux}
 mkdir -p ~/.local/bin \
   ~/.cache/terraform-plugins \
-  ~/.config/{alacritty,bat,gh,ghostty,gitconfig,kitty,lazydocker,lazygit,niri,nvim,starship,tmux,noctalia} \
+  ~/.config/{alacritty,bat,gh,ghostty,gitconfig,kitty,lazydocker,lazygit,niri,nvim,starship,tmux,noctalia,superfile} \
   ~/Pictures/Wallpapers
 
 cp -r --update=none ./wallpapers/ ~/Pictures/Wallpapers/
@@ -30,6 +30,7 @@ cp -rf ./config/nvim/{*,.*} ~/.config/nvim/
 cp -rf ./config/starship/* ~/.config/starship/
 cp -rf ./config/tmux/* ~/.config/tmux/
 cp -rf ./config/k9s/* ~/.config/k9s/
+cp -rf ./config/superfile/* ~/.config/superfile/
 
 cp -rf ./config/niri/* ~/.config/niri/
 [[ -f ~/.config/niri/noctalia.kdl ]] || touch ~/.config/niri/noctalia.kdl
