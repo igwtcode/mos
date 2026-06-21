@@ -275,6 +275,8 @@ pkgs=(
   git
   git-delta
   github-cli
+  # Gitea/Forgejo cli
+  tea
   glab
   git-remote-codecommit
   lazygit

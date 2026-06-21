@@ -212,4 +212,8 @@ fi
 
 # source <(gum completion zsh)
 
+if command -v tea &>/dev/null; then
+  source <(tea completion zsh)
+fi
+
 [[ -f ~/.customrc.sh ]] && source ~/.customrc.sh
