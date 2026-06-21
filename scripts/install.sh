@@ -146,7 +146,7 @@ pkgs=(
   wireguard-tools
   wpa_supplicant
   freerdp
-  v2rayn-bin
+  #v2rayn-bin
   tailscale
 
   # Filesystem tools
