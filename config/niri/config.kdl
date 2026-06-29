@@ -268,6 +268,7 @@ window-rule {
   match app-id="zen"
   match app-id="com.mitchellh.ghostty"
   match app-id="kitty"
+  match app-id="dev.zed.Zed"
   draw-border-with-background false
   background-effect {
     blur true
