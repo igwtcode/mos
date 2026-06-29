@@ -44,3 +44,7 @@ cp -rf ./config/niri/* ~/.config/niri/
 }
 
 bat cache --build &>/dev/null || true
+
+if command -v tea &>/dev/null; then
+  tea login helper setup
+fi
