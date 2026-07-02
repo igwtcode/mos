@@ -35,6 +35,7 @@ export LG_CONFIG_FILE=~/.config/lazygit/config.yml
 export STARSHIP_CONFIG=~/.config/starship/config.toml
 export TF_PLUGIN_CACHE_DIR="$HOME/.cache/terraform-plugins"
 export SAM_CLI_TELEMETRY=0
+export TANSTACK_CLI_TELEMETRY_DISABLED=1
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin:$GOPATH/bin/bin:$HOME/.cargo/bin:$HOME/.bun/bin:$HOME/.local/bin
 export LIBVIRT_DEFAULT_URI="qemu:///system"
