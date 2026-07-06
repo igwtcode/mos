@@ -46,7 +46,7 @@ gestures {
 }
 
 blur {
-  on
+  off
   passes 3
   offset 4.2
   noise 0.02
@@ -71,7 +71,7 @@ layout {
     proportion 0.66667
   }
   default-column-width {
-    proportion 0.5
+    proportion 0.33333
   }
  focus-ring {
     // on
