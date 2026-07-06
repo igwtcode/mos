@@ -19,6 +19,8 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=*' 'r:|=* m:{a-z\-}={A-Z\_}'
 zstyle ':completion:*' list-dirs-first true
 
+fpath=(~/.local/share/zsh/site-functions $fpath)
+
 autoload -U +X bashcompinit && bashcompinit
 autoload -Uz compinit
 compinit -u
