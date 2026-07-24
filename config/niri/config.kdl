@@ -110,6 +110,8 @@ hotkey-overlay {
   skip-at-startup
 }
 debug {
+  // Only focus new windows that present a VALID xdg-activation token.
+  strict-new-window-focus-policy
   // Disabled: this makes niri honor xdg-activation requests with invalid
   // serials, which lets apps (esp. Chromium/Playwright) steal focus on
   // every action. Re-enable only if you want notification/tray clicks to
