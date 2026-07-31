@@ -34,7 +34,11 @@ input {
     tap
     natural-scroll
   }
-  // warp-mouse-to-focus  // off: dragged cursor onto focus-stealing windows
+  // Keeps the pointer with the focused window after keyboard navigation, so
+  // focus-follows-mouse cannot yank focus back on the next touchpad nudge.
+  // Default mode moves each axis only as far as needed; mode="center-xy" or
+  // "center-xy-always" jump to the window center instead.
+  warp-mouse-to-focus
   // Focus windows and outputs automatically when moving the mouse into them.
   // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
   // focus-follows-mouse max-scroll-amount="0%"
@@ -112,13 +116,17 @@ hotkey-overlay {
   skip-at-startup
 }
 debug {
-  // Only focus new windows that present a VALID xdg-activation token.
-  strict-new-window-focus-policy
-  // Disabled: this makes niri honor xdg-activation requests with invalid
-  // serials, which lets apps (esp. Chromium/Playwright) steal focus on
-  // every action. Re-enable only if you want notification/tray clicks to
-  // jump focus to apps like Telegram/Discord.
-  // honor-xdg-activation-with-invalid-serial
+  // Keep this free of focus tweaks. The default already ignores
+  // xdg-activation tokens with invalid serials, which is what keeps
+  // automation-driven browsers from grabbing focus on every action.
+  //
+  // Do NOT set strict-new-window-focus-policy: it turns off the heuristic
+  // that focuses ordinary new windows, so app launches and portal file
+  // pickers open unfocused and out of sight.
+  //
+  // honor-xdg-activation-with-invalid-serial would let notification and
+  // tray clicks jump focus to apps like Telegram/Discord, but also hands
+  // that power back to misbehaving apps.
 }
 
 binds {
@@ -266,12 +274,16 @@ window-rule {
   match app-id="^xdg-desktop-portal$"
   open-floating false
 }
-// No auto-focus on open (also affects manual browser launches).
+// Suppress auto-focus for the browsers Playwright ships only. They spawn a
+// window per run and pull focus mid-task. Their app-ids differ from the
+// daily browsers, so match exactly:
+//   chromium-browser -> Playwright Chromium ("Google Chrome for Testing")
+//   firefox-default  -> Playwright Firefox ("Nightly")
+// Hand-launched firefox / google-chrome are intentionally NOT listed, so
+// they still focus on open like any other app.
 window-rule {
-  match app-id="^[Cc]hromium$"
-  match app-id="^google-chrome.*$"
-  match app-id="^chrome$"
-  match app-id="^firefox$"
+  match app-id="^chromium-browser$"
+  match app-id="^firefox-default$"
   open-focused false
 }
 window-rule {
