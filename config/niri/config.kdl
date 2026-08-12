@@ -8,18 +8,18 @@ prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/ss-%Y-%m-%d-%H-%M-%S.png"
 
 // Positions are in LOGICAL pixels (mode / scale), not physical.
-// DP-1: 3840x2560 @ 1.25 -> 3072x2048 logical, so eDP-1 starts at x=3072.
-output "DP-1" {
-  mode "3840x2560@59.984"
-  scale 1.25
-  position x=0 y=0
-  focus-at-startup
-}
-
+// eDP-1: 2048x1280 @ 1.0 -> 2048px logical wide, so DP-1 starts at x=2048.
 output "eDP-1" {
   mode "2048x1280@120.001"
   scale 1.0
-  position x=3072 y=427
+  position x=0 y=427
+}
+
+output "DP-1" {
+  mode "3840x2560@59.984"
+  scale 1.25
+  position x=2048 y=0
+  focus-at-startup
 }
 
 input {
